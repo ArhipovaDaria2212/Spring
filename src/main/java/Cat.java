@@ -1,5 +1,5 @@
 public class Cat {
-    private String name = "Вася";
+    private String name = "Мурка";
 
     public String getName() {
         return name;
