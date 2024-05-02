@@ -19,12 +19,12 @@ public class UserDaoImp implements UserDao {
 
    @Override
    public void add(User user) {
-      Car car;
-      if ((car = findCar(user.getCar())) == null) {
-         sessionFactory.getCurrentSession().save(user.getCar());
-      } else {
-         user.setCar(car);
-      }
+//      Car car;
+//      if ((car = findCar(user.getCar())) == null) {
+//         sessionFactory.getCurrentSession().save(user.getCar());
+//      } else {
+//         user.setCar(car);
+//      }
       sessionFactory.getCurrentSession().save(user);
    }
 
@@ -43,7 +43,7 @@ public class UserDaoImp implements UserDao {
    }
 
    public Car findCar(Car car) {
-      TypedQuery<Car> query = sessionFactory.getCurrentSession().createQuery("from Car where model = :model and series = :series");
+      TypedQuery<Car> query = sessionFactory.getCurrentSession().createQuery("from Car where model = :model and series = :series", Car.class);
       query.setParameter("model", car.getModel());
       query.setParameter("series", car.getSeries());
       try {
